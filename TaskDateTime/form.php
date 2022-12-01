@@ -1,7 +1,7 @@
 <?php
-session_start();
 include_once("library.inc.php");
 /**@var string[] $monthArray */
+/**@var string[] $values */
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,28 +13,14 @@ include_once("library.inc.php");
     <title>Document</title>
 </head>
 <body>
-<?php
-$values = [
-        'dayValue' => date('d'),
-        'monthValue' => date('m'),
-        'yearValue' => date('Y')
-];
-$arrayKeys = array_keys($values);
-foreach($arrayKeys as $key){
-    if(isset($_SESSION['$key']))
-        $values[$key] = $_SESSION['$key'];
-    if(isset($_POST[$key]))
-        $values[$key] = $_SESSION['$key'] = $_POST[$key];
-}
-?>
 <form action="handingForm.php" method="post">
     <table>
         <tr>
             <td>Введіть дату</td>
             <td>
-                <?=createDate(1, 31, "day", $values['dayValue'])?>
-                <?=createDate(1,12,"month", $values['monthValue'], $monthArray)?>
-                <?=createDate(1970, date('Y'), "year", $values['yearValue'])?>
+                <?=createDate(1, 31, 'day', $values['day'])?>
+                <?=createDate(1,12,'month', $values['month'], $monthArray)?>
+                <?=createDate(1970, date('Y'), 'year', $values['year'])?>
             </td>
         </tr>
         <tr>

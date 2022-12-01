@@ -1,4 +1,17 @@
 <?php
+session_start();
+$values = [
+    'day' => date('d'),
+    'month' => date('m'),
+    'year' => date('Y')
+];
+$arrayKeys = array_keys($values);
+foreach ($arrayKeys as $key) {
+    if (isset($_SESSION[$key]))
+        $values[$key] = $_SESSION[$key];
+    if (isset($_POST[$key]))
+        $values[$key] = $_SESSION[$key] = $_POST[$key];
+}
 $monthArray = [
     1 => 'Січень',
     'Лютий',
@@ -25,7 +38,7 @@ function createDate($firstIndex, $lastIndex, $name, $value=null, $month=null){
             $select = 'selected';
         else
             $select = '';
-        $str .= "<option {select} value=\"$i\">$titles</option>";
+        $str .= "<option $select value=\"$i\">$titles</option>";
     }
     $str .= "</select>";
     return $str;
