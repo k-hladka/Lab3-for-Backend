@@ -1,0 +1,20 @@
+textarea{
+    width:30%;
+    margin-bottom: 10px;
+    white-space: pre;
+}
+div:first-child textarea{
+    margin-left: 3%;
+}
+button{
+    margin: 10px 70px;
+}
+table, td, th{
+    border: 1px solid lightslategrey;
+}
+table{
+    border-collapse: collapse;
+}
+td, th{
+    padding: 10px;
+}
